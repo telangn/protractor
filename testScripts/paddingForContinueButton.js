@@ -26,7 +26,7 @@ describe('Padding for continue button', function(){
         element(by.css(crFlow.flightLegCheckbox)).click();
         $(crFlow.continueButton).click();
 
-        browser.sleep(10000); // Keep getting an error here
+        browser.sleep(10000); 
 
 		element(by.id('flightSelectButton-0-6')).click();
 

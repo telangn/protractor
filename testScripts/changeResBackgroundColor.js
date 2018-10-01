@@ -6,7 +6,7 @@ var lastName = "Telang";
 var PNR = "ABCDE";
 
 
-describe('Chnage res flow', function(){
+describe('Change res flow', function(){
 	browser.waitForAngularEnabled(false); //If testing angular app remove this line
 
     it('should nav to angular', function() {
@@ -21,9 +21,9 @@ describe('Chnage res flow', function(){
         browser.sleep(1000);
 
         //Enter PNR and search for trip
-          $(crFlow.findTripFN).sendKeys();
-          $('#findReservationForm.lastName').sendKeys();
-          $('#findReservationForm.recordLocator').sendKeys();
+        //  $(crFlow.findTripFN).sendKeys();
+        //  $('#findReservationForm.lastName').sendKeys();
+        //  $('#findReservationForm.recordLocator').sendKeys();
         
         element(by.id(crFlow.findTripName)).sendKeys(name);
         element(by.id(crFlow.findTripLastName)).sendKeys(lastName);

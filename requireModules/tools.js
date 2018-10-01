@@ -1,7 +1,7 @@
 module.exports = {
 
   	hello: function() {
-      	return "HelloDanikaPrivetZdes";
+      	return "HelloFunction";
 	},
 
 	number: function(a, b) {
