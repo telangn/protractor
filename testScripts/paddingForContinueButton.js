@@ -6,10 +6,10 @@ var lastName = "Telang";
 var PNR = "ABCDE";
 
 
-describe('Padding for continue button', function(){
-	browser.waitForAngularEnabled(false);
+describe('Padding for continue button', function () {
+    browser.waitForAngularEnabled(false);
 
-    it('on trip summary page', function() {
+    it('on trip summary page', function () {
         browser.manage().window().setSize(380, 1000);
         browser.get(rootVars.silo2);
 
@@ -22,13 +22,13 @@ describe('Padding for continue button', function(){
         element(by.id(crFlow.findTripPNR)).sendKeys(PNR);
         element(by.id(crFlow.findTripSubmit)).click();
 
-		$(crFlow.changeResLink).click();
+        $(crFlow.changeResLink).click();
         element(by.css(crFlow.flightLegCheckbox)).click();
         $(crFlow.continueButton).click();
 
-        browser.sleep(10000); 
+        browser.sleep(10000);
 
-		element(by.id('flightSelectButton-0-6')).click();
+        element(by.id('flightSelectButton-0-6')).click();
 
         browser.sleep(5000);
 
