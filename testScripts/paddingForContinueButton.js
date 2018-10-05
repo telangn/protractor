@@ -33,6 +33,6 @@ describe('Padding for continue button', function () {
         browser.sleep(5000);
 
         //Trip summary page
-        crFlow.verifyContinueButtonPadding(crFlow.tripSummaryContinueButton, '0px');
+        crFlow.verifyPadding(crFlow.tripSummaryContinueButton, '0px');
     });
 });

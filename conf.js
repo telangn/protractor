@@ -10,21 +10,24 @@ exports.config = {
 		}
 	},
 	jasmineNodeOpts: {
-		defaultTimeoutInterval: 2500000
+		showColors: true,
+		defaultTimeoutInterval: 30000
 	},
 
 	/* 
 	capabilities: {
-	 	'browserName': 'chrome'
-	 },
-	 chromeOptions: {
-	 	args: ['--window-size=800,1000']
-	 },
-	 multiCapabilities: [
+		browserName: 'chrome',
+		chromeOptions: {
+	 		args: ['--window-size=800,1000']
+	 	}
+	},
+	 
+	multiCapabilities: [
 	 	{
-	 		'browserName':'firefox'
-	 	}, {
-	 		'browserName':'chrome'
+	 		browserName:'firefox'
+		}, 
+		{
+	 		browserName:'chrome'
 	 	}
 	 ],
 	 */

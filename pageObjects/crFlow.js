@@ -16,7 +16,7 @@ module.exports = {
 		});
 	},
 
-	verifyContinueButtonPadding: function (button, padding) {
+	verifyPadding: function (button, padding) {
 		element(by.id(button)).getCssValue('padding-left').then(function (data) {
 			expect(data).toBe(padding);
 		});
