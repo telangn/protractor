@@ -1,27 +1,27 @@
-
 var Jasmine2HtmlReporter = require('protractor-jasmine2-html-reporter');
 exports.config = {
 	directConnect: true,
 
+
 	capabilities: {
+		browserName: 'chrome',
+		chromeOptions: {
+			/*args: ['--window-size=800,1000']*/
+		}
+	},
+	/*capabilities: {
 		browserName: 'chrome',
 		chromeOptions: {
 			args: ['user-agent=Mozilla/5.0 (iPhone; CPU iPhone OS 10_0 like Mac OS X) AppleWebKit/602.1.38 (KHTML, like Gecko) Version/10.0 Mobile/14A300 Safari/602.1 AmericanAirlines']
 		}
-	},
+	},*/
 	jasmineNodeOpts: {
 		showColors: true,
 		defaultTimeoutInterval: 30000
 	},
 
-	/* 
-	capabilities: {
-		browserName: 'chrome',
-		chromeOptions: {
-	 		args: ['--window-size=800,1000']
-	 	}
-	},
-	 
+
+	/*
 	multiCapabilities: [
 	 	{
 	 		browserName:'firefox'
@@ -32,7 +32,8 @@ exports.config = {
 	 ],
 	 */
 
-	specs: ['testScripts/changeResBackgroundColor.js', 'testScripts/paddingForContinueButton.js'],
+	/*specs: ['testScripts/changeResBackgroundColor.js', 'testScripts/paddingForContinueButton.js'],*/
+	specs:['testScripts/testFunctions.js'],
 	framework: 'jasmine',
 
 	//npm install protractor-jasmine2-html-reporter --save-dev
@@ -44,4 +45,3 @@ exports.config = {
 		);
 	}
 };
-

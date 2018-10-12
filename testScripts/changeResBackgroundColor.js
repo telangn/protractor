@@ -10,14 +10,13 @@ describe('Change res flow', function () {
     browser.waitForAngularEnabled(false); //If testing angular app remove this line
 
     it('should nav to angular', function () {
-        // browser.get('https://angularjs.org/');  If want to test angular app 
+         
         browser.manage().window().setSize(380, 1000);
         browser.get(rootVars.silo1);
-
-
         browser.sleep(1000);
+        
         $(crFlow.myTrips).click();
-        //For angular app a good way to locate elements is by binding ex..(by.binding('nameOfBinding'))
+        
         browser.sleep(1000);
 
         //Enter PNR and search for trip
@@ -45,14 +44,5 @@ describe('Change res flow', function () {
 
         //Confirm background colors
         crFlow.verifyBackgroundColor();
-
-        //element(by.model('yourName')).sendKeys('test run test run test run'); 
-
-        /*
-        Angular apps use data-binding so protractor would need to find a model or
-        some type of ng unit to bind to 
-        */
-
-
     });
 });

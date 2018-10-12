@@ -14,7 +14,9 @@ describe('Padding for continue button', function () {
         browser.get(rootVars.silo2);
 
         browser.sleep(1000);
+
         $(crFlow.myTrips).click();
+        
         browser.sleep(1000);
 
         element(by.id(crFlow.findTripName)).sendKeys(name);
