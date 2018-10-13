@@ -49,22 +49,16 @@ module.exports = {
     },
 
     verifyTableRowCount: function (locator, count) {
-        /*$(locator).all(by.xpath('.//tbody/tr')).count().then(function (data) {
+        var rows = element.all(by.xpath(locator));
+        rows.count().then(function (data) {
             expect(data).to.equal(parseInt(count));
-        });*/
-        var table = element.all(by.css(locator));
-        table.all(by.tagName("tr")).count().then(function (data) {
-            expect(data).to.equal(count);
         });
     },
 
     verifyTableColumnCount: function (locator, count) {
-        /*$(locator).all(by.xpath('.//tbody/tr/td')).count().then(function (data) {
+        var cols = element.all(by.xpath(locator));
+        cols.count().then(function (data) {
             expect(data).to.equal(parseInt(count));
-        });*/
-        var table = element.all(by.css(locator));
-        table.all(by.tagName("td")).count().then(function (data) {
-            expect(data).to.equal(count);
         });
     },
 

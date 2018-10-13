@@ -26,7 +26,7 @@ describe('test my functions', function () {
         browser.get("http://toolsqa.com/automation-practice-table/");
         browser.sleep(1000);
         functions.verifyText('#content > h1', "Automation Practice Table");
-        //functions.verifyTableColumnCount('.tsc_table_s13', 6);
-        functions.verifyTableRowCount('tsc_table_s13', 4);
+        functions.verifyTableColumnCount('.//tbody/tr[1]/td', 6);
+        functions.verifyTableRowCount('.//tbody/tr', 4);
     });
 });
