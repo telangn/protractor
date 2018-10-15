@@ -1,4 +1,3 @@
-var Jasmine2HtmlReporter = require('protractor-jasmine2-html-reporter');
 exports.config = {
 	directConnect: true,
 
@@ -7,6 +6,7 @@ exports.config = {
 		browserName: 'chrome',
 		chromeOptions: {
 			/*args: ['--window-size=800,1000']*/
+			args: ['--start-maximized']
 		}
 	},
 	/*capabilities: {
@@ -19,8 +19,6 @@ exports.config = {
 		showColors: true,
 		defaultTimeoutInterval: 30000
 	},
-
-
 	/*
 	multiCapabilities: [
 	 	{
@@ -33,15 +31,65 @@ exports.config = {
 	 */
 
 	/*specs: ['testScripts/changeResBackgroundColor.js', 'testScripts/paddingForContinueButton.js'],*/
-	specs:['testScripts/testFunctions.js'],
+	specs: ['testScripts/testFunctions.js'],
 	framework: 'jasmine',
 
-	//npm install protractor-jasmine2-html-reporter --save-dev
 	onPrepare: function () {
-		jasmine.getEnv().addReporter(
-			new Jasmine2HtmlReporter({
-				savePath: 'target/screenshots'
-			})
-		);
+		var jasmineReporters = require('jasmine-reporters');
+		jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter({
+			consolidateAll: true,
+			savePath: './target/',
+			filePrefix: 'xmlresults'
+		}));
+
+		var fs = require('fs-extra');
+
+		fs.emptyDir('./target/screenshots/', function (err) {
+			console.log(err);
+		});
+
+		jasmine.getEnv().addReporter({
+			specDone: function (result) {
+				if (result.status == 'failed') {
+					browser.getCapabilities().then(function (caps) {
+						var browserName = caps.get('browserName');
+
+						browser.takeScreenshot().then(function (png) {
+							var stream = fs.createWriteStream('./target/screenshots/' + browserName + '-' + result.fullName + '.png');
+							stream.write(new Buffer(png, 'base64'));
+							stream.end();
+						});
+					});
+				}
+			}
+		});
+	},
+
+	//HTMLReport called once tests are finished
+	onComplete: function () {
+		var browserName, browserVersion;
+		var capsPromise = browser.getCapabilities();
+
+		capsPromise.then(function (caps) {
+			browserName = caps.get('browserName');
+			browserVersion = caps.get('version');
+			platform = caps.get('platform');
+
+			var HTMLReport = require('protractor-html-reporter-2');
+
+			testConfig = {
+				reportTitle: 'Protractor Test Execution Report',
+				outputPath: './target/',
+				outputFilename: 'ProtractorTestReport',
+				screenshotPath: './screenshots',
+				testBrowser: browserName,
+				browserVersion: browserVersion,
+				modifiedSuiteName: false,
+				screenshotsOnlyOnFailure: true,
+				testPlatform: platform
+			};
+			new HTMLReport().from('./target/xmlresults.xml', testConfig);
+		});
 	}
+
 };

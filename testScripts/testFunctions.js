@@ -5,8 +5,6 @@ describe('test my functions', function () {
     browser.waitForAngularEnabled(false);
 
     it('test first webpage', function () {
-
-        browser.driver.manage().window().maximize();
         browser.get("https://angularjs.org");
         browser.sleep(1000);
         functions.verifyUrl("https://angularjs.org/");
