@@ -1,9 +1,11 @@
 var functions = require("../Functions/functions");
-
+var log4js = require("../utilities/log4js");
 describe('test my functions', function () {
 
     browser.waitForAngularEnabled(false);
 
+    log4js.log('This is the beginning of my tests');
+        
     it('test first webpage', function () {
         browser.get("https://angularjs.org");
         browser.sleep(1000);
